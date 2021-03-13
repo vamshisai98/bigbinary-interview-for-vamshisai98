@@ -19,8 +19,6 @@ body {
   width: 80%;
 }
 
-
-
 .badge {
   display: flex;
   justify-content: center;
@@ -39,21 +37,16 @@ body {
 
 li {
   list-style: none;
-
 }
 
 
 table {
-
-
   border: 2px solid #F4F5F7;
   border-radius: 8px;
   display: table;
   min-height: 79vh;
   width: 100%;
 }
-
-
 
 thead,
 tbody,
@@ -73,16 +66,7 @@ th {
 tbody,
 td {
   background: #FFFFFF;
-  /* width: 100%; */
 }
-
-td {
-  white-space: nowrap;
-}
-
-
-
-
 
 .filter-section {
   display: flex;
