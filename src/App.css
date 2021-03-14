@@ -19,6 +19,8 @@ body {
   width: 80%;
 }
 
+
+
 .badge {
   display: flex;
   justify-content: center;
@@ -37,16 +39,21 @@ body {
 
 li {
   list-style: none;
+
 }
 
 
 table {
+
+
   border: 2px solid #F4F5F7;
   border-radius: 8px;
   display: table;
   min-height: 79vh;
   width: 100%;
 }
+
+
 
 thead,
 tbody,
@@ -66,7 +73,16 @@ th {
 tbody,
 td {
   background: #FFFFFF;
+  /* width: 100%; */
 }
+
+td {
+  white-space: nowrap;
+}
+
+
+
+
 
 .filter-section {
   display: flex;
@@ -75,9 +91,24 @@ td {
   margin: 20px 0px;
 }
 
-.pagination {
+.pagination,
+.pagination-details {
   margin: 5px;
   padding: 5px;
   display: flex;
-  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+
+.page-item {
+  margin: 10px;
+
+}
+
+a {
+  text-decoration: none;
+}
+
+a:focus {
+  background: blue;
 }
