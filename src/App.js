@@ -2,19 +2,17 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
 import Table from './components/Table';
+import './lib/font-awesome/css/all.min.css';
 
 function App() {
   return (
     <Router>
-      <Route path='/'>
-        {/* <Redirect to='/page=1' /> */}
-        <div className='App'>
-          <Header />
-          <div className='content'>
-            <Table />
-          </div>
+      <div className='App'>
+        <Header />
+        <div className='content'>
+          <Table />
         </div>
-      </Route>
+      </div>
     </Router>
   );
 }

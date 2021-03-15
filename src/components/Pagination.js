@@ -1,17 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Pagination = ({ postPerPage, totalPost, paginate }) => {
+const Pagination = ({ postPerPage, totalPost, paginate, pageValue }) => {
   const pageNumbers = [];
 
-  for (let i = 1; i < Math.ceil(totalPost / postPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(totalPost / postPerPage); i++) {
     pageNumbers.push(i);
   }
+  const next = pageValue + 1;
+  const prev = pageValue - 1;
 
   return (
     <nav>
       <ul className='pagination-details'>
-        <li className='page-item'>Prev</li>
+        <li className='page-item'>
+          <Link onClick={() => paginate(prev)} to={`/page=${prev}`}>
+            <i className='fas fa-chevron-left'></i>
+          </Link>
+        </li>
         {pageNumbers.map((number, index) => (
           <li key={number} className='page-item'>
             <Link
@@ -23,7 +29,11 @@ const Pagination = ({ postPerPage, totalPost, paginate }) => {
             </Link>
           </li>
         ))}
-        <li className='page-item'>Next</li>
+        <li className='page-item'>
+          <Link onClick={() => paginate(next)} to={`/page=${next}`}>
+            <i className='fas fa-chevron-right'></i>
+          </Link>
+        </li>
       </ul>
     </nav>
   );

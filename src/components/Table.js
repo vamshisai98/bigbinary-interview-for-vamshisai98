@@ -5,13 +5,11 @@ import TableList from './TableList';
 
 const Table = () => {
   const location = useLocation();
-  console.log(location);
   const pageValue = parseInt(location.pathname.split('=')[1]);
-  // console.log(pageValue);
 
   const [details, setDetails] = useState([]);
-  const [currentPage, setCurrentPage] = useState(pageValue);
-  const [postPerPage, setPostPerPage] = useState(11);
+  const [currentPage, setCurrentPage] = useState(pageValue || 1);
+  const [postPerPage, setPostPerPage] = useState(12);
 
   const indexOfLastPost = currentPage * postPerPage;
 
@@ -66,6 +64,7 @@ const Table = () => {
           postPerPage={postPerPage}
           totalPost={details.length}
           paginate={paginate}
+          pageValue={pageValue}
         />
       </div>
     </div>

@@ -70,6 +70,12 @@ th {
 
 }
 
+tr {
+  cursor: pointer;
+}
+
+
+
 tbody,
 td {
   background: #FFFFFF;
@@ -101,14 +107,130 @@ td {
 
 
 .page-item {
-  margin: 10px;
+  border: 1px solid #E4E4E7;
+  padding: 10px;
 
+}
+
+.page-item:nth-child(1) {
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+}
+
+.page-item:nth-last-child(1) {
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+
+.page-item:active {
+  background: red;
 }
 
 a {
   text-decoration: none;
 }
 
-a:focus {
+
+.details-modal {
+  min-height: 130vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.details-modal-box {
+  margin: 0 auto;
+  width: 525px;
+  background: white;
+  border: 2px solid;
+  position: relative;
+  top: 70px;
+}
+
+/* a:focus {
   background: blue;
+} */
+
+
+.details-modal-content {
+  margin: 7px;
+  padding: 7px;
+}
+
+.modal-content-header {
+  padding: 4px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.rocket-details {
+  padding: 4px;
+}
+
+.rocket-info {
+  flex: 1;
+  padding: 10px;
+}
+
+.modal-badge {
+  margin-left: 20px;
+
+}
+
+.rocket-name1,
+.rocket-type-info,
+.rocket-links {
+  margin: 5px;
+}
+
+.rocket-name1 {
+  display: flex;
+}
+
+.rocket-img {
+  height: 60px;
+  padding: 10px;
+}
+
+.rocket-config {
+  display: flex;
+  flex-direction: column;
+}
+
+.closebutton {
+  position: absolute;
+  right: 20px;
+  top: 7px;
+  color: #4B5563;
+  cursor: pointer;
+}
+
+.rocket-config-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 4px;
+  margin: 4px;
+  border-bottom: 1px solid;
+}
+
+.flight-number,
+.mission-name,
+.rocket-type,
+.rocket-name,
+.manufacturer,
+.nationality,
+.launch-date,
+.payload-type,
+.orbit,
+.launch-site {
+  flex: 0.8;
+}
+
+.rocket-config-value {
+  flex: 1;
 }
