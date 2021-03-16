@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import Pagination from './Pagination';
 import { useLocation } from 'react-router-dom';
+import DetailsModal from './DetailsModal';
+
 import TableList from './TableList';
 
 const Table = () => {
   const location = useLocation();
-  const pageValue = parseInt(location.pathname.split('=')[1]);
+  const pageValue = parseInt(location.pathname.split('/')[1]);
 
   const [details, setDetails] = useState([]);
   const [currentPage, setCurrentPage] = useState(pageValue || 1);
   const [postPerPage, setPostPerPage] = useState(12);
+
+  const [showDetailsModal, setShowDetailsModal] = useState(false);
+
+  const [modalData, setModalData] = useState([]);
 
   const indexOfLastPost = currentPage * postPerPage;
 
@@ -19,6 +25,14 @@ const Table = () => {
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
+  };
+
+  const handleClick = (data) => {
+    console.log('working');
+    setShowDetailsModal(true);
+
+    const modalData = details.filter((d) => d.flight_number === data);
+    setModalData(modalData);
   };
 
   const [loading, setLoading] = useState(false);
@@ -64,11 +78,17 @@ const Table = () => {
               currentPost={currentPost}
               loading={loading}
               setLoading={setLoading}
+              handleClick={handleClick}
             />
           }
         </tbody>
       </table>
-
+      {showDetailsModal && (
+        <DetailsModal
+          setShowDetailsModal={setShowDetailsModal}
+          modalData={modalData}
+        />
+      )}
       <div className='pagination'>
         <Pagination
           postPerPage={postPerPage}

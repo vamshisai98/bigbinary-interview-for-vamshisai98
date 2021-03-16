@@ -1,30 +1,10 @@
 import React, { Fragment, useState } from 'react';
 import moment from 'moment';
-import DetailsModal from './DetailsModal';
 import Spinner from './Spinner';
 
-const TableList = ({ details, currentPost, loading, setLoading }) => {
-  const [showDetailsModal, setShowDetailsModal] = useState(false);
-
-  const [modalData, setModalData] = useState([]);
-
-  const handleClick = (data) => {
-    console.log('working');
-    setShowDetailsModal(true);
-
-    const modalData = details.filter((d) => d.flight_number === data);
-    setModalData(modalData);
-    console.log(modalData);
-  };
-
+const TableList = ({ details, currentPost, loading, handleClick }) => {
   return (
     <>
-      {showDetailsModal && (
-        <DetailsModal
-          setShowDetailsModal={setShowDetailsModal}
-          modalData={modalData}
-        />
-      )}
       {loading && <Spinner />}
       {details.length > 0 ? (
         currentPost.map((list, index) => (
