@@ -21,10 +21,13 @@ const Table = () => {
     setCurrentPage(pageNumber);
   };
 
+  const [loading, setLoading] = useState(false);
   const getDetails = async () => {
     try {
+      setLoading(true);
       const resp = await fetch(`https://api.spacexdata.com/v3/launches`);
       const data = await resp.json();
+      if (data.length > 0) setLoading(false);
       setDetails(data);
     } catch (error) {
       console.log(error.message);
@@ -55,7 +58,14 @@ const Table = () => {
           </tr>
         </thead>
         <tbody>
-          {<TableList details={details} currentPost={currentPost} />}
+          {
+            <TableList
+              details={details}
+              currentPost={currentPost}
+              loading={loading}
+              setLoading={setLoading}
+            />
+          }
         </tbody>
       </table>
 

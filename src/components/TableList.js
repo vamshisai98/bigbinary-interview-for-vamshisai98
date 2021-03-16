@@ -1,24 +1,35 @@
 import React, { Fragment, useState } from 'react';
 import moment from 'moment';
 import DetailsModal from './DetailsModal';
+import Spinner from './Spinner';
 
-const TableList = ({ details, currentPost }) => {
+const TableList = ({ details, currentPost, loading, setLoading }) => {
   const [showDetailsModal, setShowDetailsModal] = useState(false);
 
-  const handleClick = () => {
+  const [modalData, setModalData] = useState([]);
+
+  const handleClick = (data) => {
     console.log('working');
     setShowDetailsModal(true);
+
+    const modalData = details.filter((d) => d.flight_number === data);
+    setModalData(modalData);
+    console.log(modalData);
   };
 
   return (
     <>
       {showDetailsModal && (
-        <DetailsModal setShowDetailsModal={setShowDetailsModal} />
+        <DetailsModal
+          setShowDetailsModal={setShowDetailsModal}
+          modalData={modalData}
+        />
       )}
+      {loading && <Spinner />}
       {details.length > 0 ? (
         currentPost.map((list, index) => (
           <Fragment key={index}>
-            <tr onClick={handleClick}>
+            <tr onClick={() => handleClick(list.flight_number)}>
               <td>{list.flight_number}</td>
               <td>
                 {moment(list.launch_date_utc).format('D MMMM YYYY [at] h:mm')}
@@ -30,7 +41,7 @@ const TableList = ({ details, currentPost }) => {
               <td>
                 <div className='badge'>
                   <div className='badge-center'>
-                    {list.launch_success == true ? (
+                    {list.launch_success === true ? (
                       <div
                         className='badge-content'
                         style={{
@@ -40,7 +51,7 @@ const TableList = ({ details, currentPost }) => {
                       >
                         Success
                       </div>
-                    ) : list.launch_success == null ? (
+                    ) : list.launch_success === null ? (
                       <div
                         className='badge-content'
                         style={{

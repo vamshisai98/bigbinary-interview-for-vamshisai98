@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
 import Table from './components/Table';
