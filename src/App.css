@@ -94,8 +94,14 @@ td {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 20px 0px;
+  margin: 10px 0px;
 }
+
+select {
+  padding: 6px;
+  border: none;
+}
+
 
 .pagination,
 .pagination-details {
@@ -131,7 +137,8 @@ a {
 }
 
 
-.details-modal {
+.details-modal,
+.date-modal {
   min-height: 130vh;
   background: rgba(0, 0, 0, 0.3);
   z-index: 1;
@@ -141,7 +148,8 @@ a {
   width: 100%;
 }
 
-.details-modal-box {
+.details-modal-box,
+.date-modal-box {
   margin: 0 auto;
   width: 525px;
   background: white;
@@ -151,10 +159,20 @@ a {
   border-radius: 6px;
 }
 
-/* a:focus {
-  background: blue;
-} */
 
+.date-modal-box {
+  width: 580px;
+}
+
+.closeDatebutton {
+  text-align: end;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.date {
+  padding: 15px 0;
+}
 
 .details-modal-content {
   margin: 7px;

@@ -14,7 +14,7 @@ const Pagination = ({ postPerPage, totalPost, paginate, pageValue }) => {
     <nav>
       <ul className='pagination-details'>
         <li className='page-item'>
-          <Link onClick={() => paginate(prev)} to={`/page=${prev}`}>
+          <Link onClick={() => paginate(prev)} to={`/${prev}`}>
             <i className='fas fa-chevron-left'></i>
           </Link>
         </li>
@@ -30,7 +30,7 @@ const Pagination = ({ postPerPage, totalPost, paginate, pageValue }) => {
           </li>
         ))}
         <li className='page-item'>
-          <Link onClick={() => paginate(next)} to={`/page=${next}`}>
+          <Link onClick={() => paginate(next)} to={`/${next}`}>
             <i className='fas fa-chevron-right'></i>
           </Link>
         </li>

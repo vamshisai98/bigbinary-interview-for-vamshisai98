@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import Pagination from './Pagination';
 import { useLocation } from 'react-router-dom';
 import DetailsModal from './DetailsModal';
-
 import TableList from './TableList';
+import Filter from './Filter';
+import DatePicker from './DatePicker';
 
 const Table = () => {
   const location = useLocation();
@@ -12,10 +13,6 @@ const Table = () => {
   const [details, setDetails] = useState([]);
   const [currentPage, setCurrentPage] = useState(pageValue || 1);
   const [postPerPage, setPostPerPage] = useState(12);
-
-  const [showDetailsModal, setShowDetailsModal] = useState(false);
-
-  const [modalData, setModalData] = useState([]);
 
   const indexOfLastPost = currentPage * postPerPage;
 
@@ -27,15 +24,20 @@ const Table = () => {
     setCurrentPage(pageNumber);
   };
 
+  const [loading, setLoading] = useState(false);
+
+  const [showDetailsModal, setShowDetailsModal] = useState(false);
+  const [modalData, setModalData] = useState([]);
+
   const handleClick = (data) => {
     console.log('working');
     setShowDetailsModal(true);
 
     const modalData = details.filter((d) => d.flight_number === data);
     setModalData(modalData);
+    console.log(modalData);
   };
 
-  const [loading, setLoading] = useState(false);
   const getDetails = async () => {
     try {
       setLoading(true);
@@ -56,8 +58,12 @@ const Table = () => {
   return (
     <div className='space-table'>
       <div className='filter-section'>
-        <div className='date'>date</div>
-        <div className='filter'>filter</div>
+        <div className='date'>
+          <DatePicker />
+        </div>
+        <div className='filter'>
+          <Filter />
+        </div>
       </div>
       <table>
         <thead>
@@ -89,6 +95,7 @@ const Table = () => {
           modalData={modalData}
         />
       )}
+
       <div className='pagination'>
         <Pagination
           postPerPage={postPerPage}
