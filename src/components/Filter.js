@@ -1,18 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
-const Filter = () => {
+const Filter = ({ setFilter, filter, pageValue, to, from, filterValue }) => {
+  const handleChangeFilter = (e) => {
+    e.preventDefault();
+    setFilter(e.target.value);
+  };
+  useEffect(() => {}, [filter]);
+
   return (
     <div className='filter-section'>
       <i
         className='fas fa-filter'
         style={{ paddingTop: '8px', fontSize: '11px' }}
       ></i>
-      <select name='' id=''>
-        <option value='All Launches'>All Launches</option>
-        <option value='Upcoming Launches'>Upcoming Launches</option>
-        <option value='Successful Launches'>Successful Launches</option>
-        <option value='Failed Launches'>Failed Launches</option>
-      </select>
+      <Link to={`/${pageValue}/${filter}/${to}/${from}`}>
+        <select onChange={handleChangeFilter} defaultValue={filterValue}>
+          <option value='all'>All Launches</option>
+          <option value='upcoming'>Upcoming Launches</option>
+          <option value='success'>Successful Launches</option>
+          <option value='failed'>Failed Launches</option>
+        </select>
+      </Link>
     </div>
   );
 };

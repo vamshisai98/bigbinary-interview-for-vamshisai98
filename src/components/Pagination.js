@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const Pagination = ({ postPerPage, totalPost, paginate, pageValue }) => {
+const Pagination = ({
+  postPerPage,
+  totalPost,
+  paginate,
+  pageValue,
+  to,
+  from,
+  filterValue,
+}) => {
   const pageNumbers = [];
 
   for (let i = 1; i <= Math.ceil(totalPost / postPerPage); i++) {
@@ -9,6 +17,8 @@ const Pagination = ({ postPerPage, totalPost, paginate, pageValue }) => {
   }
   const next = pageValue + 1;
   const prev = pageValue - 1;
+
+  useEffect(() => {});
 
   return (
     <nav>
@@ -22,7 +32,7 @@ const Pagination = ({ postPerPage, totalPost, paginate, pageValue }) => {
           <li key={number} className='page-item'>
             <Link
               onClick={() => paginate(number)}
-              to={`/${index + 1}`}
+              to={`/${index + 1}/${filterValue}/${to}/${from}`}
               className='page-link'
             >
               {number}
