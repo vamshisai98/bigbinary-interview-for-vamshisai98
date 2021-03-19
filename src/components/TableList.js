@@ -2,11 +2,17 @@ import React, { Fragment } from 'react';
 import moment from 'moment';
 import Spinner from './Spinner';
 
-const TableList = ({ details, currentPost, loading, handleClick }) => {
+const TableList = ({
+  details,
+  currentPost,
+  loading,
+  handleClick,
+  filterArr,
+}) => {
   return (
     <>
-      {loading && <Spinner />}
-      {details.length > 0 ? (
+      {loading && !filterArr.length && <Spinner />}
+      {filterArr.length ? (
         currentPost.map((list, index) => (
           <Fragment key={index}>
             <tr onClick={() => handleClick(list.flight_number)}>
@@ -62,7 +68,7 @@ const TableList = ({ details, currentPost, loading, handleClick }) => {
       ) : (
         <>
           <tr>
-            <td>No results</td>
+            <td>No results found for the specific filter</td>
           </tr>
         </>
       )}

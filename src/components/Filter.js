@@ -1,12 +1,19 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Filter = ({ setFilter, filter, pageValue, to, from, filterValue }) => {
+const Filter = ({
+  setFilter,
+  filter,
+  pageValue,
+  toValue,
+  fromValue,
+  filterValue,
+}) => {
   const handleChangeFilter = (e) => {
     e.preventDefault();
     setFilter(e.target.value);
   };
-  useEffect(() => {}, [filter]);
+  // useEffect(() => {}, [filter, fromValue, toValue]);
 
   return (
     <div className='filter-section'>
@@ -14,7 +21,7 @@ const Filter = ({ setFilter, filter, pageValue, to, from, filterValue }) => {
         className='fas fa-filter'
         style={{ paddingTop: '8px', fontSize: '11px' }}
       ></i>
-      <Link to={`/${pageValue}/${filter}/${to}/${from}`}>
+      <Link to={`/${1}/${filter}/${fromValue}/${toValue}`}>
         <select onChange={handleChangeFilter} defaultValue={filterValue}>
           <option value='all'>All Launches</option>
           <option value='upcoming'>Upcoming Launches</option>

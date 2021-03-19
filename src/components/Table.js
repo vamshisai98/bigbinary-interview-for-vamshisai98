@@ -3,41 +3,35 @@ import Pagination from './Pagination';
 import { useLocation } from 'react-router-dom';
 import DetailsModal from './DetailsModal';
 import TableList from './TableList';
-import moment from 'moment';
 
 import Filter from './Filter';
 import DatePicker from './DatePicker';
 
 const Table = () => {
   const location = useLocation();
-
   const pageValue = parseInt(location.pathname.split('/')[1] || 1);
-  // const [pageValue, setPageValue] = useState(pageNo);
   const filterValue = location.pathname.split('/')[2] || 'all';
+  const fromValue = location.pathname.split('/')[3] || '';
+  const toValue = location.pathname.split('/')[4] || '';
 
   const [details, setDetails] = useState([]);
-  const [currentPage, setCurrentPage] = useState(pageValue);
+  const [filterArr, setFilterArr] = useState([]);
+  const [currentPage, setCurrentPage] = useState(pageValue || 1);
   const [postPerPage, setPostPerPage] = useState(12);
 
   const [filter, setFilter] = useState(filterValue);
-  const [to, setTo] = useState('');
-  const [from, setFrom] = useState('');
-  const [filterArr, setFilterArr] = useState([]);
+
+  const [loading, setLoading] = useState(false);
+  const [showDetailsModal, setShowDetailsModal] = useState(false);
+  const [modalData, setModalData] = useState([]);
 
   const indexOfLastPost = currentPage * postPerPage;
-
   const indexofFirstPost = indexOfLastPost - postPerPage;
-
   const currentPost = filterArr.slice(indexofFirstPost, indexOfLastPost);
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
-
-  const [loading, setLoading] = useState(false);
-
-  const [showDetailsModal, setShowDetailsModal] = useState(false);
-  const [modalData, setModalData] = useState([]);
 
   const handleClick = (data) => {
     setShowDetailsModal(true);
@@ -63,36 +57,43 @@ const Table = () => {
           return details;
         }
       });
+      const dateFilter = filterDetailsData.filter((obj) => {
+        return (
+          obj.launch_date_utc >= fromValue && obj.launch_date_utc <= toValue
+        );
+      });
 
       setDetails(data);
-      setFilterArr(filterDetailsData);
+
+      if (fromValue === '' && toValue === '') {
+        setFilterArr(filterDetailsData);
+      } else {
+        setFilterArr(dateFilter);
+      }
     } catch (error) {
       console.log(error.message);
     }
   };
 
-  const setDateFilter = (data1, data2) => {
-    console.log(moment(data1).toDate());
-    console.log(data2);
-  };
-
   useEffect(() => {
     getDetails();
-  }, [filterValue]);
+    setCurrentPage(pageValue);
+  }, [filterValue, fromValue, toValue, currentPage]);
 
   return (
     <div className='space-table'>
       <div className='filter-section'>
         <div className='date'>
-          <DatePicker setDateFilter={setDateFilter} />
+          <DatePicker pageValue={pageValue} filter={filter} />
         </div>
+
         <div className='filter'>
           <Filter
             setFilter={setFilter}
             filter={filter}
             pageValue={pageValue}
-            to={to}
-            from={from}
+            toValue={toValue}
+            fromValue={fromValue}
             filterValue={filterValue}
           />
         </div>
@@ -112,7 +113,7 @@ const Table = () => {
         <tbody>
           {
             <TableList
-              details={details}
+              filterArr={filterArr}
               currentPost={currentPost}
               loading={loading}
               setLoading={setLoading}
@@ -135,8 +136,8 @@ const Table = () => {
           paginate={paginate}
           pageValue={pageValue}
           filterArr={filterArr}
-          to={to}
-          from={from}
+          toValue={toValue}
+          fromValue={fromValue}
           filterValue={filterValue}
         />
       </div>

@@ -1,11 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
-import 'react-date-range/dist/styles.css';
-import 'react-date-range/dist/theme/default.css';
+import 'react-date-range/dist/styles.css'; // main style file
+import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRangePicker } from 'react-date-range';
+import { Redirect } from 'react-router-dom';
+import moment from 'moment';
 
-const DatePickerModal = ({ setShowDateModal }) => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+const DatePickerModal = ({ setShowDateModal, pageValue, filter }) => {
+  const [startDate, setStartDate] = useState();
+  const [endDate, setEndDate] = useState();
 
   const selectionRange = {
     startDate: startDate,
@@ -26,10 +28,11 @@ const DatePickerModal = ({ setShowDateModal }) => {
       }
     };
     document.addEventListener('mousedown', handler);
+
     return () => {
       document.removeEventListener('mousedown', handler);
     };
-  });
+  }, [startDate, endDate]);
 
   return (
     <div className='date-modal'>
@@ -43,11 +46,14 @@ const DatePickerModal = ({ setShowDateModal }) => {
               }}
             ></i>
           </div>
-          <DateRangePicker
-            ranges={[selectionRange]}
-            onChange={handleSelect}
-            months={1}
-          />
+          {startDate && endDate && (
+            <Redirect
+              to={`/${pageValue}/${filter}/${moment
+                .utc(startDate)
+                .format()}/${moment.utc(endDate).format()}`}
+            ></Redirect>
+          )}
+          <DateRangePicker ranges={[selectionRange]} onChange={handleSelect} />
         </div>
       </div>
     </div>

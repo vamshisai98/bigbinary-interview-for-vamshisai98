@@ -6,8 +6,8 @@ const Pagination = ({
   totalPost,
   paginate,
   pageValue,
-  to,
-  from,
+  toValue,
+  fromValue,
   filterValue,
 }) => {
   const pageNumbers = [];
@@ -24,7 +24,10 @@ const Pagination = ({
     <nav>
       <ul className='pagination-details'>
         <li className='page-item'>
-          <Link onClick={() => paginate(prev)} to={`/${prev}`}>
+          <Link
+            onClick={() => paginate(prev)}
+            to={`/${prev}/${filterValue}/${fromValue}/${toValue}`}
+          >
             <i className='fas fa-chevron-left'></i>
           </Link>
         </li>
@@ -32,7 +35,7 @@ const Pagination = ({
           <li key={number} className='page-item'>
             <Link
               onClick={() => paginate(number)}
-              to={`/${index + 1}/${filterValue}/${to}/${from}`}
+              to={`/${index + 1}/${filterValue}/${fromValue}/${toValue}`}
               className='page-link'
             >
               {number}
@@ -40,7 +43,10 @@ const Pagination = ({
           </li>
         ))}
         <li className='page-item'>
-          <Link onClick={() => paginate(next)} to={`/${next}`}>
+          <Link
+            onClick={() => paginate(next)}
+            to={`/${next}/${filterValue}/${fromValue}/${toValue}`}
+          >
             <i className='fas fa-chevron-right'></i>
           </Link>
         </li>
