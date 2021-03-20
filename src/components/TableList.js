@@ -11,8 +11,8 @@ const TableList = ({
 }) => {
   return (
     <>
-      {loading && !filterArr.length && <Spinner />}
-      {filterArr.length ? (
+      {/* {loading && !filterArr.length && <Spinner />} */}
+      {filterArr.length && !loading ? (
         currentPost.map((list, index) => (
           <Fragment key={index}>
             <tr onClick={() => handleClick(list.flight_number)}>
@@ -65,12 +65,16 @@ const TableList = ({
             </tr>
           </Fragment>
         ))
-      ) : (
+      ) : !filterArr.length && !loading ? (
         <>
           <tr>
-            <td>No results found for the specific filter</td>
+            <td className='noResult' colSpan='7'>
+              No results found for the specific filter
+            </td>
           </tr>
         </>
+      ) : (
+        <Spinner />
       )}
     </>
   );

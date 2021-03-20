@@ -10,10 +10,9 @@ const Spinner = () => {
             src={spinner}
             alt='Loading....'
             style={{
-              width: '400px',
-              margin: 'auto',
-              display: 'block',
-              textAlign: 'center',
+              position: 'absolute',
+              transform: 'translate(450%, -70%)',
+              width: '100px',
             }}
           />
         </td>

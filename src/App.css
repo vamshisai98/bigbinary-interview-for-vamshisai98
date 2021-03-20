@@ -77,6 +77,12 @@ td {
   white-space: nowrap;
 }
 
+.noResult {
+  position: absolute;
+  right: 40%;
+  padding-top: 40px;
+}
+
 .filter-section {
   display: flex;
   flex-direction: row;
