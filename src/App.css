@@ -21,8 +21,6 @@ body {
   width: 80%;
 }
 
-
-
 .badge {
   display: flex;
   justify-content: center;
@@ -42,9 +40,7 @@ body {
 
 li {
   list-style: none;
-
 }
-
 
 table {
   border: 2px solid #F4F5F7;
@@ -53,8 +49,6 @@ table {
   min-height: 79vh;
   width: 100%;
 }
-
-
 
 thead,
 tbody,
@@ -68,14 +62,11 @@ th {
   background: #F4F5F7;
   padding: 10px;
   text-align: left;
-
 }
 
 tr {
   cursor: pointer;
 }
-
-
 
 tbody,
 td {
@@ -85,10 +76,6 @@ td {
 td {
   white-space: nowrap;
 }
-
-
-
-
 
 .filter-section {
   display: flex;
@@ -102,7 +89,6 @@ select {
   border: none;
 }
 
-
 .pagination,
 .pagination-details {
   margin: 5px;
@@ -111,11 +97,9 @@ select {
   justify-content: flex-end;
 }
 
-
 .page-item {
   border: 1px solid #E4E4E7;
-  padding: 10px;
-
+  height: 24px;
 }
 
 .page-item:nth-child(1) {
@@ -128,14 +112,15 @@ select {
   border-bottom-right-radius: 7px;
 }
 
-.page-item:active {
-  background: red;
-}
-
-a {
+.page-item a {
   text-decoration: none;
+  padding: 10px;
+  line-height: 23px;
 }
 
+.page-item a:active {
+  background: #F4F5F7;
+}
 
 .details-modal,
 .date-modal {
@@ -158,7 +143,6 @@ a {
   top: 70px;
   border-radius: 6px;
 }
-
 
 .date-modal-box {
   width: 580px;
