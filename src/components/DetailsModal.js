@@ -79,23 +79,36 @@ const DetailsModal = ({ setShowDetailsModal, modalData }) => {
                       {x.rocket.rocket_name}
                     </div>
                     <div className='rocket-links'>
-                      <a href={x.links.article_link} rel='noopener noreferrer'>
+                      <a
+                        href={x.links.article_link}
+                        rel='noopener noreferrer'
+                        target='_blank'
+                      >
                         <i className='fas fa-globe'></i>
                       </a>
-                      <a href={x.links.article_link} rel='noopener noreferrer'>
+                      <a
+                        href={x.links.article_link}
+                        rel='noopener noreferrer'
+                        target='_blank'
+                      >
                         <i className='fab fa-wikipedia-w'></i>
                       </a>
-                      <a href={x.links.video_link} rel='noopener noreferrer'>
+                      <a
+                        href={x.links.video_link}
+                        rel='noopener noreferrer'
+                        target='_blank'
+                      >
                         <i className='fab fa-youtube'></i>
                       </a>
                     </div>
                   </div>
                 </div>
                 <div className='rocket-details'>
-                  {x.details}{' '}
+                  {x.details}
                   <a
                     href={x.links.wikipedia}
-                    target='rel="noopener noreferrer"'
+                    rel='noopener noreferrer'
+                    target='_blank'
                   >
                     Wikipedia
                   </a>
