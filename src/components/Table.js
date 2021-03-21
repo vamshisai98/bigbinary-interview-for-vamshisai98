@@ -84,7 +84,12 @@ const Table = () => {
     <div className='space-table'>
       <div className='filter-section'>
         <div className='date'>
-          <DatePicker pageValue={pageValue} filter={filter} />
+          <DatePicker
+            pageValue={pageValue}
+            filter={filter}
+            toValue={toValue}
+            fromValue={fromValue}
+          />
         </div>
 
         <div className='filter'>

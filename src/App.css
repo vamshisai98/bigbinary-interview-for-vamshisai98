@@ -156,6 +156,20 @@ select {
   width: 580px;
 }
 
+.date-btn {
+  border: none;
+  background: none;
+  cursor: pointer
+}
+
+.date-btn span {
+  margin: 0px 10px;
+}
+
+.date-btn:focus {
+  outline: none;
+}
+
 .closeDatebutton {
   text-align: end;
   margin: 10px;
