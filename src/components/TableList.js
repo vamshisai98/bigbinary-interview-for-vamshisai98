@@ -11,7 +11,6 @@ const TableList = ({
 }) => {
   return (
     <>
-      {/* {loading && !filterArr.length && <Spinner />} */}
       {filterArr.length && !loading ? (
         currentPost.map((list, index) => (
           <Fragment key={index}>

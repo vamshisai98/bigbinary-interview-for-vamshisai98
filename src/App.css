@@ -1,7 +1,6 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Inter';
   font-size: 14px;
   color: #1F2937;
 }
@@ -97,15 +96,13 @@ select {
 
 .pagination,
 .pagination-details {
-  margin: 5px;
-  padding: 5px;
   display: flex;
   justify-content: flex-end;
 }
 
 .page-item {
   border: 1px solid #E4E4E7;
-  height: 24px;
+  height: 34px;
 }
 
 .page-item:nth-child(1) {
@@ -120,8 +117,8 @@ select {
 
 .page-item a {
   text-decoration: none;
-  padding: 10px;
-  line-height: 23px;
+  padding: 11px;
+  line-height: 33px;
   border: none;
 }
 
@@ -132,7 +129,7 @@ select {
 
 .details-modal,
 .date-modal {
-  min-height: 130vh;
+  min-height: 150vh;
   background: rgba(0, 0, 0, 0.3);
   z-index: 1;
   position: absolute;

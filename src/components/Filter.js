@@ -1,19 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Filter = ({
-  setFilter,
-  filter,
-  pageValue,
-  toValue,
-  fromValue,
-  filterValue,
-}) => {
+const Filter = ({ setFilter, filter, toValue, fromValue, filterValue }) => {
   const handleChangeFilter = (e) => {
     e.preventDefault();
     setFilter(e.target.value);
   };
-  // useEffect(() => {}, [filter, fromValue, toValue]);
 
   return (
     <div className='filter-section'>

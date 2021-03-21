@@ -17,7 +17,7 @@ const Table = () => {
   const [details, setDetails] = useState([]);
   const [filterArr, setFilterArr] = useState([]);
   const [currentPage, setCurrentPage] = useState(pageValue || 1);
-  const [postPerPage, setPostPerPage] = useState(12);
+  const postPerPage = 12;
 
   const [filter, setFilter] = useState(filterValue);
 
