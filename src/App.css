@@ -122,11 +122,13 @@ select {
   text-decoration: none;
   padding: 10px;
   line-height: 23px;
+  border: none;
 }
 
-.page-item a:active {
-  background: #F4F5F7;
+.page-item.active {
+  background: #9e9e9e8a;
 }
+
 
 .details-modal,
 .date-modal {

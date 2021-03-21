@@ -36,11 +36,14 @@ const Pagination = ({
           )}
         </li>
         {pageNumbers.map((number, index) => (
-          <li key={number} className='page-item'>
+          <li
+            key={number}
+            className={pageValue === number ? 'page-item active' : 'page-item'}
+          >
             <Link
               onClick={() => paginate(number)}
               to={`/${index + 1}/${filterValue}/${fromValue}/${toValue}`}
-              className='page-link active'
+              className='page-item'
             >
               {number}
             </Link>
