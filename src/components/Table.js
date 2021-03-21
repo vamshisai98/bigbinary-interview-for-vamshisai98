@@ -35,7 +35,7 @@ const Table = () => {
 
   const handleClick = (data) => {
     setShowDetailsModal(true);
-    const modalData = details.filter((d) => d.flight_number === data);
+    const modalData = details.filter((d) => d.mission_name === data);
     setModalData(modalData);
   };
 

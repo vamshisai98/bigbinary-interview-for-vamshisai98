@@ -15,7 +15,7 @@ const TableList = ({
       {filterArr.length && !loading ? (
         currentPost.map((list, index) => (
           <Fragment key={index}>
-            <tr onClick={() => handleClick(list.flight_number)}>
+            <tr onClick={() => handleClick(list.mission_name)}>
               <td>{list.flight_number}</td>
               <td>
                 {moment(list.launch_date_utc).format('D MMMM YYYY [at] h:mm')}
